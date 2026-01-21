@@ -16,7 +16,7 @@ def toml_contents(request, *args, **kwargs):
         "ORG_PHYSICAL_ADDRESS": "2 Fredrick Street, Kings Cross, London, United Kingdom WC1X 0ND",
         "ORG_TWITTER": "link_io",
         "ORG_OFFICIAL_EMAIL": "support@linkupio.com",
-        "ORG_GITHUB": "linkioafrica",
+        "ORG_GITHUB": "/linkioafrica",
       },
     "PRINCIPALS": [
       {
@@ -32,16 +32,16 @@ def toml_contents(request, *args, **kwargs):
       {
         "code": asset.code,
         "issuer": asset.issuer,
-        "name": "NGNC Coin",
-        "desc": "Asset backed token pegged 1:1 to Nigerian Naira",
+        "name": "USDC Coin",
+        "desc": "Asset backed token pegged 1:1 to US Dollar",
         "display_decimals": 2,
         "is_asset_anchored": "true",
         "is_unlimited": "true",
         "anchor_asset_type": "fiat",
-        "anchor_asset": "NGN",
+        "anchor_asset": "USD",
         "redemption_instructions": "contact Authorized Dealers or signup with KYC info on LINK",
         "status": "test",
-        "image": "https://uploads-ssl.webflow.com/60a70a1080cf2974d4b1595e/61961ce43c530394bcb05349_NGRC.png"
+        "image": "https://uploads-ssl.webflow.com/60a70a1080cf2974d4b1595e/61961ce43c530394bcb05349_USDC.png"
       },
     ]
   }

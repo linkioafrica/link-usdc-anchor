@@ -8,14 +8,14 @@ class AnchorConfig(AppConfig):
 
         from .integrations import (
             toml_contents,
-            # AnchorDeposit,
-            # AnchorWithdraw,
+            AnchorDeposit,
+            AnchorWithdraw,
             # AnchorRails,
         )
 
         register_integrations(
             toml = toml_contents,
-            # deposit=AnchorDeposit(),
-            # withdrawal=AnchorWithdraw(),
+            deposit=AnchorDeposit(),
+            withdrawal=AnchorWithdraw(),
             # rails=AnchorRails(),
         )

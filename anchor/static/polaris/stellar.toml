@@ -25,43 +25,15 @@ name="Tomisin Leshi"
 email="tomisinleshi@linkio.africa"
 
 [[CURRENCIES]]
-code="NGNC"
-issuer="GASBV6W7GGED66MXEVC7YZHTWWYMSVYEY35USF2HJZBLABLYIFQGXZY6"
-name="NGN Coin"
-desc="Asset backed token pegged 1:1 to Nigerian Naira"
-display_decimals=2
-is_asset_anchored=true
-is_unlimited=true
-anchor_asset_type="fiat"
-anchor_asset="NGN"
-redemption_instructions="Access through trusted partners and stellar wallets"
-status="live"
-image="https://uploads-ssl.webflow.com/60a70a1080cf2974d4b1595e/61961ce43c530394bcb05349_NGRC.png"
-
-[[CURRENCIES]]
-code="GHSC"
-issuer="GASBV6W7GGED66MXEVC7YZHTWWYMSVYEY35USF2HJZBLABLYIFQGXZY6"
-name="GHS Coin"
-desc="Asset anchored token pegged 1:1 to the Ghanaian Cedi"
-display_decimals=2
-is_asset_anchored=true
-is_unlimited=true
-anchor_asset_type="fiat"
-anchor_asset="GHS"
-redemption_instructions="Going Live Soon on wallets and platforms"
-status="pending"
-image="https://uploads-ssl.webflow.com/60a70a1080cf2974d4b1595e/63d47feecd015ac50c3896b8_GHSC.png"
-
-[[CURRENCIES]]
-code="KESC"
-issuer="GASBV6W7GGED66MXEVC7YZHTWWYMSVYEY35USF2HJZBLABLYIFQGXZY6"
-name="KES Coin"
-desc="Asset backed token pegged 1:1 to Kenyan Shillings"
-display_decimals=2
-is_asset_anchored=true
-is_unlimited=true
-anchor_asset_type="fiat"
-anchor_asset="KESC"
-redemption_instructions="Going Live Soon on wallets and platforms"
-status="pending"
-image="https://uploads-ssl.webflow.com/6512d40fededb92020f9d207/65f06c75052c9d3cf7bed94b_KESc.png"
+code = "USDC",
+issuer = "GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN",
+name = "USDC Coin",
+desc = "Asset backed token pegged 1:1 to US Dollar",
+display_decimals = 2,
+is_asset_anchored= "true",
+is_unlimited= "true",
+anchor_asset_type= "fiat",
+anchor_asset= "USD",
+redemption_instructions= "contact Authorized Dealers or signup with KYC info on LINK",
+status= "test",
+image= "https://uploads-ssl.webflow.com/60a70a1080cf2974d4b1595e/61961ce43c530394bcb05349_USDC.png"
