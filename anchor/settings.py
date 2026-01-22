@@ -45,7 +45,7 @@ else:
 if ENVIRONMENT == "production":
     ALLOWED_HOSTS = [
         "linkio.world",
-        "link-usdc-anchor.onrender.com"
+        "link-usdc-anchor.onrender.com",
         "www.anchor.ngnc.online",
         "anchor.ngnc.online",
     ]
@@ -110,7 +110,10 @@ CORS_ALLOW_HEADERS = [
 ]
 
 # SESSION_COOKIE_AGE = 3000
-SESSION_COOKIE_DOMAIN = '.ngnc.online'
+if ENVIRONMENT == "production":
+    SESSION_COOKIE_DOMAIN = '.linkio.world'
+else:
+    SESSION_COOKIE_DOMAIN = 'localhost'
 SESSION_COOKIE_HTTPONLY = True
 
 if ENVIRONMENT == "production":
