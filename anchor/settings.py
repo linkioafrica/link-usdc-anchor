@@ -38,7 +38,7 @@ ENVIRONMENT = os.environ['ENVIRONMENT']
 
 # Environment-specific DEBUG
 if ENVIRONMENT == "production":
-    DEBUG = False
+    DEBUG = True
 else:
     DEBUG = True
 
