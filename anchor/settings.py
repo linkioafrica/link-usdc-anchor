@@ -44,10 +44,10 @@ else:
 
 if ENVIRONMENT == "production":
     ALLOWED_HOSTS = [
-        "ngnc.online",
+        "linkio.world",
+        "link-usdc-anchor.onrender.com"
         "www.anchor.ngnc.online",
         "anchor.ngnc.online",
-        "ngnc.onrender.com"
     ]
 else:  # development
     ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
@@ -85,7 +85,7 @@ FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 
 CORS_ALLOW_ALL_ORIGINS  = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = ('https://ngnc.online',)
+CORS_ORIGIN_WHITELIST = ('https://linkio.world', 'https://ngnc.online')
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_METHODS = [
@@ -162,14 +162,7 @@ if ENVIRONMENT == "development":
     }
 else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('DATABASE_NAME'),
-            'USER': os.environ.get('DATABASE_USER'),
-            'PASSWORD': os.environ.get('DATABASE_KEY'),
-            'HOST': os.environ.get('DATABASE_HOST'),
-            'PORT': os.environ.get('DATABASE_PORT'),
-        }
+        'default': env.db('DATABASE_URL')
     }
 
 # Password validation

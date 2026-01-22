@@ -1,39 +1,33 @@
-
 NETWORK_PASSPHRASE = "Test SDF Network ; September 2015"
-ACCOUNTS = [ "GCYUZHQDNR7ZNLSDJJYATWL5NW7PACJN5QRQ2YP3LN2ROJYQ3X6AM6LR",]
+
+ACCOUNTS = [ "GBGGCKNFSFJ4TDXGPWVM2AXA4XLRGP6DRKHKXYHQZWBAC3FVR5OXUMLA",]
 TRANSFER_SERVER = "http://localhost:8000/sep6"
 TRANSFER_SERVER_SEP0024 = "http://localhost:8000/sep24"
 WEB_AUTH_ENDPOINT = "http://localhost:8000/auth"
-SIGNING_KEY = "GCQLPBWOQ5PAJYEEQBE7GDSY7X3LCYKFEBKOCNF3OUA6F74ORK74HVSQ"
+SIGNING_KEY = "GBGGCKNFSFJ4TDXGPWVM2AXA4XLRGP6DRKHKXYHQZWBAC3FVR5OXUMLA"
 
 [[PRINCIPALS]]
-name = "Evarist Emmanuel"
-email = "engremmanuelec@gmail.com"
-
-[[PRINCIPALS]]
-name = "Tomisin Leshi"
-email = "tomisinleshi@gmail.com"
+name = "LINK Operations Team"
+email = "support@linkio.africa"
 
 [[CURRENCIES]]
-code = "USDC",
-issuer = "GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN",
-name = "USDC Coin",
-desc = "Asset backed token pegged 1:1 to US Dollar",
-display_decimals = 2,
-is_asset_anchored= "true",
-is_unlimited= "true",
-anchor_asset_type= "fiat",
-anchor_asset= "USD",
-redemption_instructions= "contact Authorized Dealers or signup with KYC info on LINK",
-image= "https://uploads-ssl.webflow.com/60a70a1080cf2974d4b1595e/61961ce43c530394bcb05349_USDC.png"
+code = "USDC"
+issuer = "GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN"
+anchor_asset_type = "fiat"
+anchor_asset = "NGN"
+redemption_instructions = "Send USDC to LINK and receive NGN via bank transfer or mobile money"
+desc = "Circle USD Coin (USDC) on Stellar. LINK provides seamless USDC/NGN exchange services."
+name = "USD Coin"
+display_decimals = 2
+is_asset_anchored = "true"
+image = "https://uploads-ssl.webflow.com/60a70a1080cf2974d4b1595e/61961ce43c530394bcb05349_USDC.png"
+status = "test"
 
 [DOCUMENTATION]
 ORG_NAME = "LINK.IO LTD."
-ORG_DBA = "LINK"
-ORG_URL = "https://www.linkio.africa/"
-ORG_LOGO = "https://uploads-ssl.webflow.com/60a70a1080cf2974d4b1595e/60b623a4d06b3b67a49c9e82_WEBCLIP.png"
-ORG_DESCRIPTION = "LINK is a Global Cross Border payments platform for the next billion Africans, providing services in a Faster and Cheaper way"
-ORG_PHYSICAL_ADDRESS = "2 Fredrick Street, Kings Cross, London, United Kingdom WC1X 0ND"
-ORG_TWITTER = "link_io"
-ORG_OFFICIAL_EMAIL = "support@linkio.africa"
+ORG_LOGO = "https://linkio.world/logo.png"
+ORG_URL = "https://linkio.world"
+ORG_DESCRIPTION = "LINK provides USDC on/off-ramp services for Nigerian users. Buy and sell USDC with NGN through our secure platform."
+ORG_OFFICIAL_EMAIL = "support@linkio.world"
+ORG_SUPPORT_EMAIL = "support@linkio.world"
 ORG_GITHUB = "linkioafrica"

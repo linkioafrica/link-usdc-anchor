@@ -5,43 +5,40 @@ def toml_contents(request, *args, **kwargs):
   asset = Asset.objects.first()
   # asset2 = Asset.objects.last()
 
+  # Get distribution accounts from all assets
+  accounts = [a.distribution_account for a in Asset.objects.exclude(distribution_seed__isnull=True).exclude(distribution_seed='') if a.distribution_account]
+
   return {
+    "ACCOUNTS": accounts,
     "DOCUMENTATION":
       {
-        "ORG_NAME": "LINK.IO LTD.",
-        "ORG_DBA": "LINK",
-        "ORG_URL": "https://www.linkio.africa/",
+        "ORG_NAME": "LINK.IO GLOBAL LTD",
         "ORG_LOGO": "https://uploads-ssl.webflow.com/60a70a1080cf2974d4b1595e/60b623a4d06b3b67a49c9e82_WEBCLIP.png",
-        "ORG_DESCRIPTION": "LINK is a Global Cross Border payments platform for the next billion Africans, providing services in a Faster and Cheaper way",
-        "ORG_PHYSICAL_ADDRESS": "2 Fredrick Street, Kings Cross, London, United Kingdom WC1X 0ND",
-        "ORG_TWITTER": "link_io",
-        "ORG_OFFICIAL_EMAIL": "support@linkupio.com",
+        "ORG_URL": "https://linkio.world",
+        "ORG_LOGO": "https://linkio.world/logo.png",
+        "ORG_DESCRIPTION": "LINK provides USDC on/off-ramp services for Nigerian users. Buy and sell USDC with NGN through our secure platform.",
+        "ORG_OFFICIAL_EMAIL": "support@linkio.world",
+        "ORG_SUPPORT_EMAIL": "support@linkio.world",
         "ORG_GITHUB": "/linkioafrica",
       },
     "PRINCIPALS": [
       {
-        "name": "Evarist Emmanuel",
-        "email": "engremmanuelec@gmail.com"
+        "name": "LINK Operations",
+        "email": "support@linkio.africa"
       },
-      {
-        "name": "Tomisin Leshi",
-        "email": "tomisinleshi@gmail.com"
-      }
     ],
     "CURRENCIES": [
       {
         "code": asset.code,
         "issuer": asset.issuer,
-        "name": "USDC Coin",
-        "desc": "Asset backed token pegged 1:1 to US Dollar",
+        "anchor_asset_type": "fiat",
+        "anchor_asset": "NGN",
+        "redemption_instructions": "Send USDC to LINK and receive NGN via bank transfer or mobile money",
+        "desc": "Circle USD Coin (USDC) on Stellar. LINK provides seamless USDC/NGN exchange services.",
+        "name": "USD Coin",
+        "status": "live",
         "display_decimals": 2,
         "is_asset_anchored": "true",
-        "is_unlimited": "true",
-        "anchor_asset_type": "fiat",
-        "anchor_asset": "USD",
-        "redemption_instructions": "contact Authorized Dealers or signup with KYC info on LINK",
-        "status": "test",
-        "image": "https://uploads-ssl.webflow.com/60a70a1080cf2974d4b1595e/61961ce43c530394bcb05349_USDC.png"
       },
     ]
   }
