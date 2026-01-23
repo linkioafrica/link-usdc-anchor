@@ -81,7 +81,7 @@ MIDDLEWARE = [
     'polaris.middleware.TimezoneMiddleware',
 ]
 
-FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
+FORM_RENDERER = "django.forms.renderers.DjangoTemplates"
 
 CORS_ALLOW_ALL_ORIGINS  = True
 CORS_ALLOW_CREDENTIALS = True
