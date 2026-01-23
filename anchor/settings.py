@@ -45,8 +45,8 @@ else:
 if ENVIRONMENT == "production":
     ALLOWED_HOSTS = [
         "linkio.world",
-        "anchor.linkio.world"
-        "www.anchor.linkio.world"
+        "anchor.linkio.world",
+        "www.anchor.linkio.world",
         "link-usdc-anchor.onrender.com",
     ]
 else:  # development
@@ -85,7 +85,7 @@ FORM_RENDERER = "django.forms.renderers.DjangoTemplates"
 
 CORS_ALLOW_ALL_ORIGINS  = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = ('https://linkio.world', 'https://ngnc.online')
+CORS_ORIGIN_WHITELIST = ('https://linkio.world',)
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_METHODS = [
