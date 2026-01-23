@@ -45,9 +45,9 @@ else:
 if ENVIRONMENT == "production":
     ALLOWED_HOSTS = [
         "linkio.world",
+        "anchor.linkio.world"
+        "www.anchor.linkio.world"
         "link-usdc-anchor.onrender.com",
-        "www.anchor.ngnc.online",
-        "anchor.ngnc.online",
     ]
 else:  # development
     ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
