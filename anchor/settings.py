@@ -209,3 +209,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# SEP-10 Client Attribution Settings (fix for demo-wallet client_domain error)
+SEP10_CLIENT_ATTRIBUTION_REQUIRED = os.environ.get('SEP10_CLIENT_ATTRIBUTION_REQUIRED', 'False').lower() == 'true'
+SEP10_CLIENT_ATTRIBUTION_ALLOWLIST = os.environ.get('SEP10_CLIENT_ATTRIBUTION_ALLOWLIST', '*')
