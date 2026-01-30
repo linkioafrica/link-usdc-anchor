@@ -56,7 +56,7 @@ class AnchorWithdraw(WithdrawalIntegration):
                     "guidance": (
                         "Please enter amount you would like to withdraw from wallet"
                     ),
-                    "icon_label": ("NGNC Anchor Withdraw"),
+                    "icon_label": ("USDC Anchor Withdraw"),
                     # "icon_path": "image/NGNC.png",
                     # "show_fee_table": False,
                 }
@@ -64,7 +64,7 @@ class AnchorWithdraw(WithdrawalIntegration):
             # provides a label for the image displayed at the top of each page
             content = {
                 "title": ("Asset Selection Form"),
-                "icon_label": ("NGNC Anchor Withdraw"),
+                "icon_label": ("USDC Anchor Withdraw"),
                 # "icon_path": "image/NGNC.png"
             }
             return content
@@ -94,8 +94,8 @@ class AnchorWithdraw(WithdrawalIntegration):
         if request.query_params.get("step"):
           raise NotImplementedError()
 
-        # ownUrl = "http://localhost:3000/stellar/withdraw"
-        ownUrl = "https://ramp.linkio.world"
+        # ownUrl = "http://localhost:3000/sell"
+        ownUrl = "https://ramp.linkio.world/sell"
 
          # Full interactive url /sep24/transactions/deposit/webapp
         url = request.build_absolute_uri()

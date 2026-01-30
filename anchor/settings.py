@@ -38,7 +38,7 @@ ENVIRONMENT = os.environ['ENVIRONMENT']
 
 # Environment-specific DEBUG
 if ENVIRONMENT == "production":
-    DEBUG = True
+    DEBUG = False
 else:
     DEBUG = True
 
@@ -213,3 +213,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # SEP-10 Client Attribution Settings (fix for demo-wallet client_domain error)
 SEP10_CLIENT_ATTRIBUTION_REQUIRED = os.environ.get('SEP10_CLIENT_ATTRIBUTION_REQUIRED', 'False').lower() == 'true'
 SEP10_CLIENT_ATTRIBUTION_ALLOWLIST = os.environ.get('SEP10_CLIENT_ATTRIBUTION_ALLOWLIST', '*')
+
+# SEP-24 Interactive Flow Settings (required for popup to work correctly)
+LOCAL_MODE = os.environ.get('LOCAL_MODE', 'True').lower() == 'true'
+HOST_URL = os.environ.get('HOST_URL', 'http://localhost:8000')

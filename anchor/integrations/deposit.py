@@ -55,7 +55,7 @@ class AnchorDeposit(DepositIntegration):
                     "guidance": (
                         "Provide all info enquired below"
                     ),
-                    "icon_label": ("NGNC Anchor Deposit"),
+                    "icon_label": ("USDC Anchor Deposit"),
                     # "icon_path": "image/NGNC.png"
                 }
         elif  template == Template.MORE_INFO:
@@ -65,7 +65,7 @@ class AnchorDeposit(DepositIntegration):
                 "guidance": (
                     "If business or recipient doesn’t have, generate one and send"
                 ),
-                "icon_label": ("NGNC Anchor Deposit"),
+                "icon_label": ("USDC Anchor Deposit"),
                 # "icon_path": "image/NGNC.png"
             }
             return content
@@ -99,17 +99,19 @@ class AnchorDeposit(DepositIntegration):
         if request.query_params.get("step"):
           raise NotImplementedError()
 
-        # ownUrl = "http://localhost:3000/stellar/deposit"
-        ownUrl = "https://ramp.linkio.world"
+        ownUrl = "http://localhost:3000/menu"  # Use for local testing
+        # ownUrl = "https://ramp.linkio.world/buy"
 
         # Full interactive url /sep24/transactions/deposit/webapp
         url = request.build_absolute_uri()
         parsed_url = urlparse(url)
         query_result = parse_qs(parsed_url.query)
+        print("query_result", query_result)
 
         token = (query_result['token'][0])
+        # amount = (query_result['amount'][0])
 
-        ownUrl += "?" if parsed_url.query else "&"
+        ownUrl += "?" if parsed_url.query else "?"
 
         payload = {
             'type': 'deposit',
@@ -117,10 +119,19 @@ class AnchorDeposit(DepositIntegration):
             'transaction_id':transaction.id,
             'token': token,
             'wallet': transaction.stellar_account,
-            'callback': callback
+            'callback': callback,
+            # 'amount': amount
         }
+
+        # Change status from incomplete to pending_anchor so demo wallet doesn't think it failed
+        # while user is filling out the form
+        # transaction.status = Transaction.STATUS.pending_anchor
+        # transaction.save()
+
         # The anchor uses a standalone interactive flow
-        return ownUrl + urlencode(payload, quote_via=quote_plus)
+        fullUrl = ownUrl + urlencode(payload, quote_via=quote_plus)
+        print("fullUrl", fullUrl)
+        return fullUrl
 
     def after_interactive_flow(
         self,
@@ -141,10 +152,9 @@ class AnchorDeposit(DepositIntegration):
         - Does NOT send USDC yet (that happens after manual verification via complete_deposit)
         """
         amount_str = request.query_params.get("amount")
-        fee_str = request.query_params.get("amount_fee")
 
         # Validate required parameters exist
-        if amount_str is None or fee_str is None:
+        if amount_str is None:
             logger.error(
                 "Missing required query params for deposit after_interactive_flow: "
                 f"amount={amount_str}, amount_fee={fee_str}, transaction_id={transaction.id}"
@@ -155,22 +165,22 @@ class AnchorDeposit(DepositIntegration):
             return
 
         # Safely parse Decimal values
-        try:
-            transaction.amount_in = Decimal(amount_str)
-            transaction.amount_fee = Decimal(fee_str)
-        except (InvalidOperation, TypeError) as e:
-            logger.error(
-                "Invalid Decimal values for deposit after_interactive_flow: "
-                f"amount={amount_str}, amount_fee={fee_str}, transaction_id={transaction.id}, error={e}",
-                exc_info=True
-            )
-            transaction.status = Transaction.STATUS.error
-            transaction.status_message = "Invalid amount or amount_fee format in interactive deposit callback"
-            transaction.save()
-            return
+        # try:
+        #     transaction.amount_in = Decimal(amount_str)
+        # except (InvalidOperation, TypeError) as e:
+        #     logger.error(
+        #         "Invalid Decimal values for deposit after_interactive_flow: "
+        #         f"amount={amount_str}, transaction_id={transaction.id}, error={e}",
+        #         exc_info=True
+        #     )
+        #     transaction.status = Transaction.STATUS.error
+        #     transaction.status_message = "Invalid amount or amount_fee format in interactive deposit callback"
+        #     transaction.save()
+        #     return
 
-        transaction.status = Transaction.STATUS.pending_user_transfer_start
-        transaction.amount_out = transaction.amount_in - transaction.amount_fee
+        transaction.status = Transaction.STATUS.pending_user_transfer_complete
+        transaction.amount_in = (request.query_params.get("amount"))
+        transaction.amount_out = (request.query_params.get("amount_out"))
         transaction.memo_type = (request.query_params.get("memo_type"))
         transaction.memo = (request.query_params.get("hashed"))
         transaction.from_address = (request.query_params.get("account"))
@@ -213,12 +223,12 @@ def complete_deposit(transaction_id: str) -> bool:
         transaction = Transaction.objects.get(id=transaction_id, kind=Transaction.KIND.deposit)
 
         if transaction.status not in [
-            Transaction.STATUS.pending_user_transfer_start,
+            Transaction.STATUS.pending_user_transfer_complete,
             Transaction.STATUS.pending_anchor
         ]:
             logger.error(
                 f"Transaction {transaction_id} is in invalid status: {transaction.status}. "
-                f"Expected pending_user_transfer_start or pending_anchor"
+                f"Expected pending_user_transfer_complete or pending_anchor"
             )
             return False
 
