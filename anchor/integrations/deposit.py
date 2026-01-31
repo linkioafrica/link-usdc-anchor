@@ -100,7 +100,7 @@ class AnchorDeposit(DepositIntegration):
           raise NotImplementedError()
 
         ownUrl = "http://localhost:3000/menu"  # Use for local testing
-        # ownUrl = "https://ramp.linkio.world/buy"
+        # ownUrl = "https://origin.linkio.world/menu"
 
         # Full interactive url /sep24/transactions/deposit/webapp
         url = request.build_absolute_uri()

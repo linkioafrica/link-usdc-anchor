@@ -94,8 +94,8 @@ class AnchorWithdraw(WithdrawalIntegration):
         if request.query_params.get("step"):
           raise NotImplementedError()
 
-        # ownUrl = "http://localhost:3000/sell"
-        ownUrl = "https://ramp.linkio.world/sell"
+        # ownUrl = "http://localhost:3000/menu"
+        ownUrl = "https://origin.linkio.world/menu"
 
          # Full interactive url /sep24/transactions/deposit/webapp
         url = request.build_absolute_uri()
