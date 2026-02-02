@@ -1,9 +1,9 @@
 NETWORK_PASSPHRASE="Public Global Stellar Network ; September 2015"
 
 ACCOUNTS = [ "GC2MQRX47W5HQOBQPRE6A6ULZIJ5NGDJKDK7NYKNX3HY5OQSOGKOJC7D",]
-TRANSFER_SERVER = "https://link-usdc-anchor.onrender.com/sep6"
-TRANSFER_SERVER_SEP0024 = "https://link-usdc-anchor.onrender.com/sep24"
-WEB_AUTH_ENDPOINT = "https://link-usdc-anchor.onrender.com/auth"
+TRANSFER_SERVER = "https://anchor.linkio.world/sep6"
+TRANSFER_SERVER_SEP0024 = "https://anchor.linkio.world/sep24"
+WEB_AUTH_ENDPOINT = "https://anchor.linkio.world/auth"
 SIGNING_KEY = "GC2MQRX47W5HQOBQPRE6A6ULZIJ5NGDJKDK7NYKNX3HY5OQSOGKOJC7D"
 
 [[PRINCIPALS]]
