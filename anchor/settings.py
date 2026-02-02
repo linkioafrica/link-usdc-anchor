@@ -48,7 +48,6 @@ if ENVIRONMENT == "production":
         "anchor.linkio.world",
         "www.anchor.linkio.world",
         "origin.linkio.world",  # Vercel UI
-        "link-usdc-anchor.onrender.com",
     ]
 else:  # development
     ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
