@@ -20,7 +20,7 @@ desc = "Circle USD Coin (USDC) on Stellar. LINK provides seamless USDC/NGN excha
 name = "USD Coin"
 status = "live"
 display_decimals = 2
-is_asset_anchored = "true"
+is_asset_anchored = true
 
 [DOCUMENTATION]
 ORG_NAME = "LINK.IO GLOBAL LTD"
