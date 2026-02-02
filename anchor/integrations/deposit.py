@@ -14,8 +14,17 @@ from django.conf import settings
 from stellar_sdk import Server, Keypair, TransactionBuilder, Network, Asset as StellarAsset
 from stellar_sdk.exceptions import BaseHorizonError
 import logging
+import os
+import environ
 
 logger = logging.getLogger(__name__)
+
+env = environ.Env()
+env_file = os.path.join(BASE_DIR, ".env")
+if os.path.exists(env_file):
+    env.read_env(env_file)
+
+ENVIRONMENT = env('ENVIRONMENT')
 
 class AnchorDeposit(DepositIntegration):
     def form_for_transaction(
@@ -99,8 +108,10 @@ class AnchorDeposit(DepositIntegration):
         if request.query_params.get("step"):
           raise NotImplementedError()
 
-        # ownUrl = "http://localhost:3000/menu"  # Use for local testing
-        ownUrl = "https://origin.linkio.world/menu"
+        if ENVIRONMENT == "development":
+            ownUrl = "http://localhost:3000/menu"  # Use for local testing
+        else:
+            ownUrl = "https://origin.linkio.world/menu"
 
         # Full interactive url /sep24/transactions/deposit/webapp
         url = request.build_absolute_uri()
