@@ -47,6 +47,7 @@ if ENVIRONMENT == "production":
         "linkio.world",
         "anchor.linkio.world",
         "www.anchor.linkio.world",
+        "origin.linkio.world",  # Vercel UI
         "link-usdc-anchor.onrender.com",
     ]
 else:  # development
@@ -214,6 +215,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SEP10_CLIENT_ATTRIBUTION_REQUIRED = os.environ.get('SEP10_CLIENT_ATTRIBUTION_REQUIRED', 'False').lower() == 'true'
 SEP10_CLIENT_ATTRIBUTION_ALLOWLIST = os.environ.get('SEP10_CLIENT_ATTRIBUTION_ALLOWLIST', '*')
 
-# SEP-24 Interactive Flow Settings (required for popup to work correctly)
-LOCAL_MODE = os.environ.get('LOCAL_MODE', 'True').lower() == 'true'
-HOST_URL = os.environ.get('HOST_URL', 'http://localhost:8000')
+# SEP-24 Interactive Flow Settings - Environment specific
+if ENVIRONMENT == "production":
+    LOCAL_MODE = False
+    HOST_URL = os.environ.get('HOST_URL', 'https://anchor.linkio.world')
+else:  # development
+    LOCAL_MODE = True
+    HOST_URL = os.environ.get('HOST_URL', 'http://localhost:8000')
