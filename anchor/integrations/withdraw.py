@@ -15,12 +15,9 @@ from django.conf import settings
 from stellar_sdk import Server, Keypair, TransactionBuilder, Network, Asset as StellarAsset
 from stellar_sdk.exceptions import BaseHorizonError
 import logging
-import environ
+import os
+
 logger = logging.getLogger(__name__)
-
-env = environ.Env()
-
-ENVIRONMENT = env('ENVIRONMENT')
 
 class AnchorWithdraw(WithdrawalIntegration):
     def form_for_transaction(
@@ -98,7 +95,9 @@ class AnchorWithdraw(WithdrawalIntegration):
         if request.query_params.get("step"):
           raise NotImplementedError()
 
-        if ENVIRONMENT == "development":
+        # Use os.environ to check environment (safe at runtime)
+        environment = os.environ.get('ENVIRONMENT', 'development')
+        if environment == "development":
             ownUrl = "http://localhost:3000/menu"  # Use for local testing
         else:
             ownUrl = "https://origin.linkio.world/menu"
