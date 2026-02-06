@@ -14,15 +14,10 @@ from django.conf import settings
 from stellar_sdk import Server, Keypair, TransactionBuilder, Network, Asset as StellarAsset
 from stellar_sdk.exceptions import BaseHorizonError
 import logging
-import os
 import environ
-
 logger = logging.getLogger(__name__)
 
 env = environ.Env()
-env_file = os.path.join(BASE_DIR, ".env")
-if os.path.exists(env_file):
-    env.read_env(env_file)
 
 ENVIRONMENT = env('ENVIRONMENT')
 
@@ -189,7 +184,7 @@ class AnchorDeposit(DepositIntegration):
         #     transaction.save()
         #     return
 
-        transaction.status = Transaction.STATUS.pending_user_transfer_complete
+        transaction.status = Transaction.STATUS.pending_anchor
         transaction.amount_in = (request.query_params.get("amount"))
         transaction.amount_out = (request.query_params.get("amount_out"))
         transaction.memo_type = (request.query_params.get("memo_type"))
