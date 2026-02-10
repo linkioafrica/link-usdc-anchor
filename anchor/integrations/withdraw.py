@@ -172,7 +172,7 @@ class AnchorWithdraw(WithdrawalIntegration):
             return
 
         transaction.status = Transaction.STATUS.pending_user_transfer_start
-        transaction.amount_out = transaction.amount_in - transaction.amount_fee
+        transaction.amount_out = request.query_params.get("amount_out")
         transaction.memo_type = (request.query_params.get("memo_type"))
         transaction.memo = (request.query_params.get("hashed"))
         transaction.to_address = (request.query_params.get("account"))  # Bank details stored here

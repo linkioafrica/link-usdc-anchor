@@ -221,3 +221,6 @@ if ENVIRONMENT == "production":
 else:  # development
     LOCAL_MODE = True
     HOST_URL = os.environ.get('HOST_URL', 'http://localhost:8000')
+
+# USDC Receiving Address for withdrawals
+USDC_RECEIVING_ADDRESS = os.environ.get('USDC_RECEIVING_ADDRESS', 'GAO6S7VXDRRBERPJYWQ4IVEYDW3M2IA3XDH5ICTDE4AWW4F4DBUKCXLN')
